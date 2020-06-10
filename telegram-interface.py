@@ -67,6 +67,12 @@ def sendToAll():
 def sendToAllIcinga():
     args = flask.request.json
 
+    # markdown escape #
+    for key in args.keys():
+        if type(args[key]) == str:
+            print(key)
+            args[key] = args[key].replace(".", "\\.").replace("-", "\\-")
+
     # build message #
     serviceName = args["service_name"]
     if args["service_display_name"]:
