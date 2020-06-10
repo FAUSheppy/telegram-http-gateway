@@ -3,6 +3,7 @@
 import time
 import argparse
 import telegram.ext as tg
+import telegram
 import logging
 import flask
 
@@ -43,7 +44,7 @@ def dbReadChatIdFile():
 def sendMessageToAllClients(msg):
     for chatId in dbReadChatIdFile():
         chatId = int(chatId)
-        updater.bot.send_message(chat_id=chatId, text=msg)
+        updater.bot.send_message(chat_id=chatId, text=msg, parse_mode=telegram.ParseMode.MARKDOWN_V2)
 
 
 def startHandler(update, context):
