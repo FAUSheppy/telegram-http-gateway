@@ -71,7 +71,7 @@ def sendToAllIcinga():
     for key in args.keys():
         if type(args[key]) == str:
             print(key)
-            args[key] = args[key].replace(".", "\\.").replace("-", "\\-")
+            args[key] = args[key].replace(".", "\\.").replace("-", "\\-").replace("=","\\=")
 
     # build message #
     serviceName = args["service_name"]
