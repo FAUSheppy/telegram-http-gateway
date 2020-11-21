@@ -63,6 +63,12 @@ def sendToAll():
     sendMessageToAllClients(flask.request.json["message"])
     return ("","204")
 
+def escape(string):
+    badChars = [".","-","=","(",")","+"]
+    for c in badChars:
+        string = string.replace(c,"\\"+c)
+    return string
+
 @app.route('/send-all-icinga', methods=["POST"])
 def sendToAllIcinga():
     args = flask.request.json
@@ -71,7 +77,7 @@ def sendToAllIcinga():
     for key in args.keys():
         if type(args[key]) == str:
             print(key)
-            args[key] = args[key].replace(".", "\\.").replace("-", "\\-").replace("=","\\=")
+            args[key] = escape(args[key])
 
     # build message #
     serviceName = args["service_name"]
