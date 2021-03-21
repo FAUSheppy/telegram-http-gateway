@@ -1,5 +1,5 @@
 # HTTP->Telegram Gateway Notification Service
-Simplistic server that connect to a Telegram bot, takes messages via *POST*-requests containing json encoded data and sends them to all clients that are subscribed
+Simplistic server which connects to a Telegram bot, takes messages via *POST*-requests containing json encoded data and sends them to all clients subscribed.
 
 # Telegram Setup
 - create a bot as described [here](https://core.telegram.org/bots)
@@ -31,5 +31,3 @@ The following locations are supported:
 # Example (curl)
 
     curl -X POST -H "Content-Type: application/json" --data '{"message":"hallo world"}' localhost:5000/send-all
-
-
